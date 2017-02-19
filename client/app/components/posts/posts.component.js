@@ -54,6 +54,22 @@ var PostsComponent = (function () {
             }
         });
     };
+    PostsComponent.prototype.updatePost = function (post) {
+        var _this = this;
+        var _post = {
+            _id: post._id,
+            title: post.title,
+            author: post.author,
+            content: post.content
+        };
+        this.postService.updatePost(_post).subscribe(function (data) {
+            _this.title = '';
+            _this.author = '';
+            // this.authorWebsite = '';
+            // this.postDate = null;
+            _this.content = '';
+        });
+    };
     PostsComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

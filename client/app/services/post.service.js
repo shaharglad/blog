@@ -34,6 +34,12 @@ var PostService = (function () {
         return this.http.delete('/api/post/' + id)
             .map(function (res) { return res.json(); });
     };
+    PostService.prototype.updatePost = function (post) {
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.put('/api/post/' + post._id, JSON.stringify(post), { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
     PostService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])

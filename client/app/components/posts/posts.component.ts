@@ -62,4 +62,21 @@ export class PostsComponent {
             }
         });
     }
+
+    updatePost(post){
+        var _post = {
+            _id:post._id,
+            title: post.title,
+            author: post.author,
+            content: post.content
+        };
+
+        this.postService.updatePost(_post).subscribe(data => {
+            this.title = '';
+            this.author = '';
+            // this.authorWebsite = '';
+            // this.postDate = null;
+            this.content = '';
+        });
+    }
 }

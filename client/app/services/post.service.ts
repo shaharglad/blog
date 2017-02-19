@@ -29,11 +29,11 @@ export class PostService{
         return this.http.delete('/api/post/'+id)
             .map(res => res.json());
     }
-    //
-    // updateStatus(task){
-    //     var headers = new Headers();
-    //     headers.append('Content-Type', 'application/json');
-    //     return this.http.put('/api/task/'+task._id, JSON.stringify(task), {headers: headers})
-    //         .map(res => res.json());
-    // }
+
+    updatePost(post){
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.put('/api/post/'+post._id, JSON.stringify(post), {headers: headers})
+            .map(res => res.json());
+    }
 }
