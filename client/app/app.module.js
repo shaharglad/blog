@@ -16,14 +16,15 @@ var platform_browser_1 = require('@angular/platform-browser');
 var http_1 = require('@angular/http');
 var forms_1 = require('@angular/forms');
 var app_component_1 = require('./app.component');
-var posts_component_1 = require('./components/posts/posts.component');
+var app_routing_1 = require('./app.routing');
+//import {PostsComponent} from './components/posts/posts.component';
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule],
-            declarations: [app_component_1.AppComponent, posts_component_1.PostsComponent],
+            imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule, app_routing_1.AppRoutingModule],
+            declarations: [app_component_1.AppComponent, app_routing_1.routingComponents],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>MyBlog</title>
+        <base href="/">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
@@ -45,8 +46,8 @@
     <nav>
         <!-- Navigation -->
         <ul>
-            <li class="selected"><a href="#">Blog</a></li>
-            <li><a href="#">Manage</a></li>
+            <li class="selected"><a routerLink="/home">Blog</a></li>
+            <li><a routerLink="/posts">Manage</a></li>
             <li><a href="#">Statistics</a></li>
             <li class="subscribe">
             <li>

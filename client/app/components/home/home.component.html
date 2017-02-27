@@ -1,0 +1,13 @@
+<div *ngFor="let post of posts">
+    <article class="blogPost">
+        <header>
+            <h2>{{post.title}}</h2>
+            <p>
+                Posted by <b>{{post.author}}</b>
+            </p>
+        </header>
+        <div>
+            <p>{{post.content}}</p>
+        </div>
+    </article>
+</div>

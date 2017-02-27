@@ -9,7 +9,8 @@ import {Post} from '../../../Post';
 
 @Component({
     moduleId: module.id,
-    selector: 'posts',
+    selector: 'my-app',
+    //selector: 'posts',
     templateUrl: 'posts.component.html'
 })
 

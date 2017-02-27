@@ -73,7 +73,8 @@ var PostsComponent = (function () {
     PostsComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'posts',
+            selector: 'my-app',
+            //selector: 'posts',
             templateUrl: 'posts.component.html'
         }), 
         __metadata('design:paramtypes', [post_service_1.PostService])
