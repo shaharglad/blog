@@ -401,48 +401,6 @@ aside section ul li a:hover {
 }
 
 /*------------------------------
-=COMMENT FORM
-------------------------------*/
-/* I used the #post_comment tags in order to separate the comments form style from the filter form -Tomer */
-form {
-    margin-top: 21px;
-    padding-top: 22px;
-    border-top: 1px solid #D7D7D7;
-}
-
-form p {
-    display: table;
-    margin-bottom: 22px;
-    padding: 0 22px;
-}
-
-form label {
-    display: table-cell;
-    width: 140px;
-    padding-right: 20px;
-    text-align: left;
-    font-weight: bold;
-    vertical-align: top;
-}
-
-form input[type="text"], form input[type="email"], form input[type="url"] {
-    display: table-cell;
-    width: 300px;
-    height: 20px;
-    border: 1px solid #D7D7D7;
-}
-
-form textarea {
-    width: 300px;
-    height: 100px;
-    border: 1px solid #D7D7D7;
-}
-
-form input[type="submit"] {
-    margin-left: 162px;
-}
-
-/*------------------------------
 =FOOTER
 ------------------------------*/
 footer {
@@ -523,7 +481,8 @@ body {
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
-textarea {
+textarea,
+.alert-danger {
     max-width: 280px;
 }
 

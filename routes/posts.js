@@ -11,7 +11,6 @@ var db = mongojs('mongodb://Admin:123456@ds151289.mlab.com:51289/postsdb',['post
 
 /* GET All Posts */
 router.get('/posts', function(req, res, next) {
-    console.log("Arrived to/posts");
     db.posts.find(function(err, posts) {
         if (err) {
             res.send(err);
@@ -68,6 +67,8 @@ router.put('/post/:id', function(req, res, next){
 
     if(post.title){
         updPost.title = post.title;
+        updPost.author = post.author;
+        updPost.content = post.content;
     }
 
     if(!updPost){
