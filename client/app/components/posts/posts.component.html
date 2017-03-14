@@ -32,7 +32,7 @@
                                 Content is required
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-success" [disabled]="!updatePostForm.form.valid">Save</button>
+                        <button type="submit" class="btn btn-success" [disabled]="!updatePostForm.form.valid || updatePostForm.form.pristine">Save</button>
                     </form>
                 </div>
             </div>
@@ -47,21 +47,21 @@
         <div class="form-group">
             <label for="addAuthor">Author</label>
             <input type="text" class="form-control" id="addAuthor" [(ngModel)]="author" name="addAuthor" #addAuthor="ngModel" required>
-            <div *ngIf="!addAuthor.valid" class="alert alert-danger">
+            <div *ngIf="!addAuthor.valid && addAuthor.dirty" class="alert alert-danger">
                 Author is required
             </div>
         </div>
         <div class="form-group">
             <label for="addTitle">Title</label>
             <input type="text" class="form-control" id="addTitle" [(ngModel)]="title" name="addTitle" #addTitle="ngModel" required>
-            <div *ngIf="!addTitle.valid" class="alert alert-danger">
+            <div *ngIf="!addTitle.valid && addTitle.dirty" class="alert alert-danger">
                 Title is required
             </div>
         </div>
         <div class="form-group">
             <label for="addContent">Content</label>
             <textarea type="text" class="form-control" id="addContent" [(ngModel)]="content" name="addContent" #addContent="ngModel" required></textarea>
-            <div *ngIf="!addContent.valid" class="alert alert-danger">
+            <div *ngIf="!addContent.valid && addContent.dirty" class="alert alert-danger">
                 Content is required
             </div>
         </div>

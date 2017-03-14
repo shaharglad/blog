@@ -8,4 +8,4 @@ var Post = (function () {
     return Post;
 }());
 exports.Post = Post;
-//# sourceMappingURL=post.js.map
+//# sourceMappingURL=Post.js.map

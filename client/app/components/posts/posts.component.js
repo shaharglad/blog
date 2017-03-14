@@ -11,8 +11,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var post_service_1 = require('../../services/post.service');
+var core_1 = require("@angular/core");
+var post_service_1 = require("../../services/post.service");
 var PostsComponent = (function () {
     function PostsComponent(postService) {
         var _this = this;
@@ -70,16 +70,16 @@ var PostsComponent = (function () {
             _this.content = '';
         });
     };
-    PostsComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'my-app',
-            //selector: 'posts',
-            templateUrl: 'posts.component.html'
-        }), 
-        __metadata('design:paramtypes', [post_service_1.PostService])
-    ], PostsComponent);
     return PostsComponent;
 }());
+PostsComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'my-app',
+        //selector: 'posts',
+        templateUrl: 'posts.component.html'
+    }),
+    __metadata("design:paramtypes", [post_service_1.PostService])
+], PostsComponent);
 exports.PostsComponent = PostsComponent;
 //# sourceMappingURL=posts.component.js.map
