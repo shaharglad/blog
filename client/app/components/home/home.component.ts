@@ -10,7 +10,6 @@ import {Post} from '../../../Post';
 @Component({
     moduleId: module.id,
     selector: 'my-app',
-    //selector: 'home',
     templateUrl: 'home.component.html'
 })
 

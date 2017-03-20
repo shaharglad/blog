@@ -51,7 +51,7 @@ audio {
 /* The Arimo font is from the Google free fonts library */
 @font-face {
     font-family: shauliFont;
-    src: url(/assets/fonts/Arimo-Regular.ttf);
+    src: url(fonts/Arimo-Regular.ttf);
 }
 
 #logForm {
