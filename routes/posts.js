@@ -105,9 +105,13 @@ router.put('/post/:id', function (req, res, next) {
     var updPost = {};
 
     if (post.title) {
+        updPost.postDate = post.postDate;
         updPost.title = post.title;
         updPost.author = post.author;
+        updPost.email = post.email;
+        updPost.location = post.location;
         updPost.content = post.content;
+        updPost.image = post.image;
     }
 
     if (!updPost) {

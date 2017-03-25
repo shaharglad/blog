@@ -16,7 +16,6 @@ import {HomeComponent} from './components/home/home.component';
 import {SearchComponent} from './components/search/search.component';
 import {ReversePipe} from './reverse';
 
-
 @NgModule({
     imports:      [ BrowserModule, HttpModule, FormsModule, /*AppRoutingModule*/ routing ],
     declarations: [AppComponent, PostsComponent, SearchComponent /*routingComponents*/ , HomeComponent, ReversePipe ],

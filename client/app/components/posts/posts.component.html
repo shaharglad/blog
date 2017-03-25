@@ -13,73 +13,69 @@
                 <h4 class="modal-title" id="HeadingNew">Add New Review</h4>
             </div>
             <div class="modal-body">
-                <div class="container">
-                    <form (submit)="addPost($event)" #newPostForm="ngForm">
+                <form (submit)="addPost($event)" #newPostForm="ngForm">
 
-                        <div class="form-group">
-                            <h4>Author information</h4>
+                    <div class="form-group">
+                        <h4>Author information</h4>
 
-                            <label for="addAuthor">Name</label>
-                            <input type="text" class="form-control" id="addAuthor" [(ngModel)]="author"
-                                   name="addAuthor" #addAuthor="ngModel" required>
-                            <div *ngIf="!addAuthor.valid && addAuthor.dirty" class="alert alert-danger">
-                                Author is required
-                            </div>
-
-                            <label for="addEmail">Email address</label>
-                            <input type="text" class="form-control" id="addEmail" [(ngModel)]="email"
-                                   name="addEmail" #addEmail="ngModel" required>
-                            <div *ngIf="!addEmail.valid && addEmail.dirty" class="alert alert-danger">
-                                Email address is required
-                            </div>
+                        <label for="addAuthor">Name</label>
+                        <input type="text" class="form-control" id="addAuthor" [(ngModel)]="author"
+                               name="addAuthor" #addAuthor="ngModel" required>
+                        <div *ngIf="!addAuthor.valid && addAuthor.dirty" class="alert alert-danger">
+                            Author is required
                         </div>
 
-                        <div class="form-group">
-                            <h4>Review details</h4>
+                        <label for="addEmail">Email address</label>
+                        <input type="text" class="form-control" id="addEmail" [(ngModel)]="email"
+                               name="addEmail" #addEmail="ngModel" required>
+                        <div *ngIf="!addEmail.valid && addEmail.dirty" class="alert alert-danger">
+                            Email address is required
+                        </div>
+                    </div>
 
-                            <label for="addLocation">Location (country, city)</label>
-                            <input type="text" class="form-control" id="addLocation" [(ngModel)]="location"
-                                   name="addLocation" #addLocation="ngModel" required>
-                            <div *ngIf="!addLocation.valid && addLocation.dirty" class="alert alert-danger">
-                                Location to review is required
-                            </div>
+                    <div class="form-group">
+                        <h4>Review details</h4>
 
-                            <label for="addTitle">Review title</label>
-                            <input type="text" class="form-control" id="addTitle" [(ngModel)]="title"
-                                   name="addTitle" #addTitle="ngModel" required>
-                            <div *ngIf="!addTitle.valid && addTitle.dirty" class="alert alert-danger">
-                                Title is required
-                            </div>
-
-                            <label for="addContent">Content</label>
-                            <textarea type="text" class="form-control" id="addContent" [(ngModel)]="content"
-                                      name="addContent" #addContent="ngModel" required></textarea>
-                            <div *ngIf="!addContent.valid && addContent.dirty" class="alert alert-danger">
-                                Content is required
-                            </div>
-
-                            <label for="addImage">Image URL</label>
-                            <input type="text" class="form-control" id="addImage" [(ngModel)]="image"
-                                   name="addImage" #addImage="ngModel" required>
-                            <div *ngIf="!addImage.valid && addImage.dirty" class="alert alert-danger">
-                                Image URL is required
-                            </div>
+                        <label for="addLocation">Location</label>
+                        <input type="text" class="form-control" id="addLocation" [(ngModel)]="location"
+                               name="addLocation" #addLocation="ngModel" required>
+                        <div *ngIf="!addLocation.valid && addLocation.dirty" class="alert alert-danger">
+                            Location to review is required
                         </div>
 
-                        <button type="submit" (click)="isSuccessMessageVisible(true)" class="btn btn-success"
-                                [disabled]="!newPostForm.form.valid">Submit
-                        </button>
-                        <button class="btn btn-primary" (click)="isSuccessMessageVisible(false)"
-                                data-dismiss="modal">Close
-                        </button>
-                        <div class="form-group has-success">
-                                        <span *ngIf="successMessage == true" id="helpBlock"
-                                              class="bg-success help-block"
-                                              style="padding: 6px">✔ New review added successfully</span>
+                        <label for="addTitle">Review title</label>
+                        <input type="text" class="form-control" id="addTitle" [(ngModel)]="title"
+                               name="addTitle" #addTitle="ngModel" required>
+                        <div *ngIf="!addTitle.valid && addTitle.dirty" class="alert alert-danger">
+                            Title is required
                         </div>
 
-                    </form>
-                </div>
+                        <label for="addContent">Content</label>
+                        <textarea type="text" class="form-control" id="addContent" [(ngModel)]="content"
+                                  name="addContent" #addContent="ngModel" required></textarea>
+                        <div *ngIf="!addContent.valid && addContent.dirty" class="alert alert-danger">
+                            Content is required
+                        </div>
+
+                        <label for="addImage">Image URL</label>
+                        <input type="text" class="form-control" id="addImage" [(ngModel)]="image"
+                               name="addImage" #addImage="ngModel" required>
+                        <div *ngIf="!addImage.valid && addImage.dirty" class="alert alert-danger">
+                            Image URL is required
+                        </div>
+                    </div>
+
+                    <button type="submit" (click)="isSuccessMessageVisible(true)" class="btn btn-success"
+                            [disabled]="!newPostForm.form.valid">Submit
+                    </button>
+                    <button class="btn btn-primary" (click)="isSuccessMessageVisible(false)"
+                            data-dismiss="modal">Close
+                    </button>
+                    <div class="form-group has-success">
+                        <span *ngIf="successMessage == true" id="helpBlock" class="bg-success help-block"
+                              style="padding: 6px">✔ New review added successfully</span>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -91,21 +87,21 @@
     <div class="col-md-12">
         <div class="table-responsive">
             <table id="accordion" class="table table-bordred table-striped">
-                <thead class="align-left">
-                <th>Date</th>
-                <th>Author</th>
-                <th>Location</th>
-                <th>Title</th>
+                <thead>
+                <th><small>Date</small></th>
+                <th><small>Author</small></th>
+                <th><small>Location</small></th>
+                <th><small>Title</small></th>
                 <th></th>
                 <th></th>
                 </thead>
 
-                <tbody *ngFor="let post of posts | reverse">
+                <tbody *ngFor="let post of posts">
                 <tr>
-                    <td>{{post.postDate | date: 'dd/MM/yy'}}</td>
-                    <td>{{post.author}}</td>
-                    <td>{{post.title}}</td>
-                    <td>{{post.location}}</td>
+                    <td><small>{{post.postDate | date: 'dd/MM/yy'}}</small></td>
+                    <td><small>{{post.author}}</small></td>
+                    <td><small>{{post.title}}</small></td>
+                    <td><small>{{post.location}}</small></td>
                     <td>
                         <a data-toggle="modal" href="#edit_{{post._id}}">
                             <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal"><span
@@ -148,7 +144,8 @@
 
                                         <label class="control-label">Email address</label>
                                         <input type="text" class="form-control" [(ngModel)]="post.email" name="email"
-                                               #email="ngModel" required>
+                                               #email="ngModel" required
+                                               pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
                                         <div *ngIf="!email.valid" class="alert alert-danger">
                                             Email address is required
                                         </div>
@@ -157,7 +154,7 @@
                                     <div class="form-group">
                                         <h4>Review details</h4>
 
-                                        <label class="control-label">Location (country, city)</label>
+                                        <label class="control-label">Location</label>
                                         <input type="text" class="form-control" [(ngModel)]="post.location"
                                                name="location"
                                                #location="ngModel" required>
