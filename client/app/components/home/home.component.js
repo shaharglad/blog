@@ -15,14 +15,11 @@ var core_1 = require("@angular/core");
 var post_service_1 = require("../../services/post.service");
 var HomeComponent = (function () {
     function HomeComponent(postService) {
-        this.postService = postService;
-        this.postService = postService;
-    }
-    HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
+        this.postService = postService;
         this.postService.getPosts()
             .subscribe(function (posts) { return _this.posts = posts; });
-    };
+    }
     return HomeComponent;
 }());
 HomeComponent = __decorate([

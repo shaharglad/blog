@@ -2,8 +2,7 @@
  * Created by Shahar on 27/02/2017.
  */
 
-
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {PostService} from '../../services/post.service';
 import {Post} from '../../../Post';
 
@@ -17,11 +16,8 @@ export class HomeComponent {
     posts: Post[];
 
     constructor(private postService: PostService) {
-        this.postService = postService;
-    }
-
-    ngOnInit(){
         this.postService.getPosts()
             .subscribe(posts => this.posts = posts);
     }
+
 }

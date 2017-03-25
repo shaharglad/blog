@@ -1,13 +1,15 @@
-<div *ngFor="let post of posts">
+<div *ngFor="let post of posts | reverse">
     <article class="blogPost">
         <header>
             <h2>{{post.title}}</h2>
             <p>
-                Posted by <b>{{post.author}}</b>
+                Posted on {{post.postDate | date: 'dd/MM/yy'}} by <a href="mailto:{{post.email}}"><b>{{post.author}}</b></a>
             </p>
         </header>
         <div>
             <p>{{post.content}}</p>
+
+            <img src="{{post.image}}" class="img-responsive">
         </div>
     </article>
 </div>

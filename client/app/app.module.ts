@@ -3,7 +3,7 @@
  */
 
 
-import { NgModule }      from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
@@ -14,10 +14,12 @@ import {routing} from './app.routing';
 import {PostsComponent} from './components/posts/posts.component';
 import {HomeComponent} from './components/home/home.component';
 import {SearchComponent} from './components/search/search.component';
+import {ReversePipe} from './reverse';
+
 
 @NgModule({
     imports:      [ BrowserModule, HttpModule, FormsModule, /*AppRoutingModule*/ routing ],
-    declarations: [AppComponent, PostsComponent, SearchComponent /*routingComponents*/ , HomeComponent ],
+    declarations: [AppComponent, PostsComponent, SearchComponent /*routingComponents*/ , HomeComponent, ReversePipe ],
     providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
     bootstrap: [AppComponent]
 })
