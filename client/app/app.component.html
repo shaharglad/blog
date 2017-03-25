@@ -37,12 +37,10 @@
     <aside>
         <section>
             <header>
-                <h3>Top 5 reviewers</h3>
+                <h3>Top 3 Reviewers</h3>
             </header>
             <ul>
-                <li><a href="#">30 Years in club</a></li>
-                <li><a href="#">20 Years in club</a></li>
-                <li><a href="#">10 Years in club</a></li>
+                <li *ngFor="let top of topList"><b>• {{top._id}}</b> - {{top.total}} reviews</li>
             </ul>
         </section>
         <section>

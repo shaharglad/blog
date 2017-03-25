@@ -48,12 +48,8 @@ var PostService = (function () {
         return this.http.put('/api/post/' + post._id, JSON.stringify(post), { headers: headers })
             .map(function (res) { return res.json(); });
     };
-    PostService.prototype.sortByAuthor = function (posts) {
-        console.log("Arrived to post service");
-        console.log("posts is: " + JSON.stringify(posts));
-        var headers = new http_1.Headers();
-        headers.append('Content-Type', 'application/json');
-        return this.http.post('/api/sortbyAuthor', JSON.stringify(posts), { headers: headers })
+    PostService.prototype.topList = function () {
+        return this.http.get('/api/topList')
             .map(function (res) { return res.json(); });
     };
     return PostService;

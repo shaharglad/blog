@@ -53,16 +53,16 @@ router.post('/filter', function (req, res, next) {
 });
 
 // Group by author and count how many posts
-router.post('/groupByAuthor', function (req, res, next) {
-    var posts = req.body;
-
-    console.log("posts received: " + JSON.stringify(posts));
-
-    db.posts.aggregate([{ $group: { _id: "$author", posts: { $push: "$$ROOT"}}}], function (err, results) {
+router.get('/topList', function (req, res, next) {
+    db.posts.aggregate([
+        { $project: { _id: false, "author": true}},
+        { $group: { _id: "$author", "total": { "$sum": 1 }}},
+        { $sort: { "total": -1 }},
+        { $limit: 3 }], function (err, results) {
     if (err) {
         res.send(err);
     }
-    console.log("results: " + JSON.stringify(results));
+    console.log("top results: " + JSON.stringify(results));
     res.json(results);
 });
 })

@@ -14,5 +14,12 @@ import {PostService} from './services/post.service';
 })
 
 export class AppComponent {
-    top5Reviewrs: top5[];
+    topList: any;
+
+    constructor(private postService: PostService) {
+        this.postService.topList()
+            .subscribe(topList => {
+               this.topList = topList;
+            });
+    }
 }

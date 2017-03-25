@@ -46,12 +46,8 @@ export class PostService{
         return this.http.put('/api/post/'+post._id, JSON.stringify(post), {headers: headers})
             .map(res => res.json());
     }
-    sortByAuthor(posts){
-        console.log("Arrived to post service");
-        console.log("posts is: " + JSON.stringify(posts));
-        var headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        return this.http.post('/api/sortbyAuthor', JSON.stringify(posts), {headers: headers})
+    topList(){
+        return this.http.get('/api/topList')
             .map(res => res.json());
     }
 
