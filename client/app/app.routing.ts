@@ -25,7 +25,7 @@
 
 
 import { Routes, RouterModule } from '@angular/router';
-
+import { SearchComponent } from "./components/search/search.component";
 import { HomeComponent } from './components/home/home.component';
 import { PostsComponent } from './components/posts/posts.component';
 
@@ -33,6 +33,7 @@ const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'home', component: HomeComponent },
     { path: 'posts', component: PostsComponent },
+    { path: 'search', component: SearchComponent },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

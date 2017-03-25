@@ -13,4 +13,6 @@ import {PostService} from './services/post.service';
     providers:[PostService]
 })
 
-export class AppComponent { }
+export class AppComponent {
+    top5Reviewrs: top5[];
+}

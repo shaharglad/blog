@@ -18,6 +18,7 @@ var common_1 = require("@angular/common");
 var app_routing_1 = require("./app.routing");
 var posts_component_1 = require("./components/posts/posts.component");
 var home_component_1 = require("./components/home/home.component");
+var search_component_1 = require("./components/search/search.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -26,7 +27,7 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule, /*AppRoutingModule*/ app_routing_1.routing],
-        declarations: [app_component_1.AppComponent, posts_component_1.PostsComponent /*routingComponents*/, home_component_1.HomeComponent],
+        declarations: [app_component_1.AppComponent, posts_component_1.PostsComponent, search_component_1.SearchComponent /*routingComponents*/, home_component_1.HomeComponent],
         providers: [{ provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy }],
         bootstrap: [app_component_1.AppComponent]
     })

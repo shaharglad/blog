@@ -23,6 +23,14 @@ var PostService = (function () {
         return this.http.get('/api/posts')
             .map(function (res) { return res.json(); });
     };
+    PostService.prototype.filterPosts = function (filter) {
+        console.log("Arrived to post service");
+        console.log("filter is: " + JSON.stringify(filter));
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('/api/filter', JSON.stringify(filter), { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
     PostService.prototype.addPost = function (newPost) {
         console.log("Arrived to post service");
         var headers = new http_1.Headers();
@@ -38,6 +46,14 @@ var PostService = (function () {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.put('/api/post/' + post._id, JSON.stringify(post), { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
+    PostService.prototype.sortByAuthor = function (posts) {
+        console.log("Arrived to post service");
+        console.log("posts is: " + JSON.stringify(posts));
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('/api/sortbyAuthor', JSON.stringify(posts), { headers: headers })
             .map(function (res) { return res.json(); });
     };
     return PostService;

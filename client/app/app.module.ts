@@ -13,10 +13,11 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import {routing} from './app.routing';
 import {PostsComponent} from './components/posts/posts.component';
 import {HomeComponent} from './components/home/home.component';
+import {SearchComponent} from './components/search/search.component';
 
 @NgModule({
     imports:      [ BrowserModule, HttpModule, FormsModule, /*AppRoutingModule*/ routing ],
-    declarations: [AppComponent, PostsComponent /*routingComponents*/ , HomeComponent ],
+    declarations: [AppComponent, PostsComponent, SearchComponent /*routingComponents*/ , HomeComponent ],
     providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
     bootstrap: [AppComponent]
 })

@@ -21,15 +21,25 @@ var PostsComponent = (function () {
             .subscribe(function (posts) {
             _this.posts = posts;
         });
+        this.successMessage = false;
     }
+    PostsComponent.prototype.isSuccessMessageVisible = function (showSuccessMessageBool) {
+        if (showSuccessMessageBool) {
+            this.successMessage = true;
+        }
+        else
+            this.successMessage = false;
+    };
     PostsComponent.prototype.addPost = function (event) {
         var _this = this;
         event.preventDefault();
         var newPost = {
             title: this.title,
             author: this.author,
-            //authorWebsite: this.authorWebsite,
-            //postDate: new Date().toLocaleDateString(),
+            email: this.email,
+            postDate: new Date().toLocaleDateString(),
+            location: this.location,
+            image: this.image,
             content: this.content
         };
         this.postService.addPost(newPost)
@@ -37,8 +47,10 @@ var PostsComponent = (function () {
             _this.posts.push(post);
             _this.title = '';
             _this.author = '';
-            // this.authorWebsite = '';
-            // this.postDate = null;
+            _this.email = '';
+            _this.location = '';
+            _this.image = '';
+            _this.postDate = null;
             _this.content = '';
         });
     };
@@ -60,13 +72,19 @@ var PostsComponent = (function () {
             _id: post._id,
             title: post.title,
             author: post.author,
+            email: post.email,
+            location: post.location,
+            image: post.image,
+            postDate: post.postDate,
             content: post.content
         };
         this.postService.updatePost(_post).subscribe(function (data) {
             _this.title = '';
             _this.author = '';
-            // this.authorWebsite = '';
-            // this.postDate = null;
+            _this.email = '';
+            _this.location = '';
+            _this.image = '';
+            _this.postDate = null;
             _this.content = '';
         });
     };

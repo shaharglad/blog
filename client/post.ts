@@ -5,7 +5,11 @@
 export class Post{
     title: string;
     author: string;
-    // authorWebsite: string;
-    // postDate: Date;
+    email: string;
+    location: string;
+    image: string;
+    postDate: Date;
     content: string;
+    latCoordinate: string;
+    longCoordinate: string;
 }

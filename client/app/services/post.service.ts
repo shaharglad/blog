@@ -2,18 +2,28 @@
  * Created by Shahar on 14/02/2017.
  */
 
-import {Injectable} from '@angular/core';
-import {Http, Headers} from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class PostService{
-    constructor(private http:Http){
+
+    constructor(private http: Http){
         console.log('sh Post Service Initialized...');
     }
 
     getPosts(){
         return this.http.get('/api/posts')
+            .map(res => res.json());
+    }
+
+    filterPosts(filter){
+        console.log("Arrived to post service");
+        console.log("filter is: " + JSON.stringify(filter));
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('/api/filter', JSON.stringify(filter), {headers: headers})
             .map(res => res.json());
     }
 
@@ -36,4 +46,13 @@ export class PostService{
         return this.http.put('/api/post/'+post._id, JSON.stringify(post), {headers: headers})
             .map(res => res.json());
     }
+    sortByAuthor(posts){
+        console.log("Arrived to post service");
+        console.log("posts is: " + JSON.stringify(posts));
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('/api/sortbyAuthor', JSON.stringify(posts), {headers: headers})
+            .map(res => res.json());
+    }
+
 }

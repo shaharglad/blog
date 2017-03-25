@@ -1,31 +1,16 @@
-<!--<h1>MyPosts</h1>-->
-<!--<hr>-->
-<!--<posts></posts>-->
-
-<header>
-    <table>
-        <tr>
-            <th align="center" width="40%">
-                <h2 id="blogTitleHead">
-                    <canvas id="myCanvas" height="70" style="margin-left:60px">
-                        Your browser does not support the HTML5 canvas tag.
-                    </canvas>
-                    <script>
-                        var c = document.getElementById("myCanvas");
-                        var ctx = c.getContext("2d");
-                        ctx.font = "30px Arial";
-                        ctx.strokeText("Shauli's Blog", 10, 50);
-                    </script>
-                </h2>
-            </th>
-        </tr>
-    </table>
+<header style="margin-top: -50px">
+    <div id="blogTitleHead">
+        <video id="videoLogo" width="950" autoplay>
+            <source src="./data/logo.mp4" type="video/mp4">Your browser does not support HTML5 video.
+        </video>
+    </div>
 </header>
 <nav>
     <!-- Navigation -->
     <ul>
         <li class="selected"><a [routerLink]="['/home']">Blog</a></li>
         <li><a [routerLink]="['/posts']">Manage</a></li>
+        <li><a [routerLink]="['/search']">Search</a></li>
         <li><a href="#">Statistics</a></li>
         <li class="subscribe">
         <li>
@@ -44,8 +29,6 @@
     <header>
         <h1 id="blogTitle">Meet Shauli</h1>
     </header>
-    <p>He is one the most famous bloggers in the world. "Ask Shauli" is one of the most popular and influential blogs of last decade. This blog is popularly known for creating controversies of famous celebrities. The approximate per month income or earning of Shauli is more than $400,000. His blog contains the complete information and detail about the photography and entertainment. This blog mostly talks about controversial news and updates about the celebrities.</p>
-    <img src="images/intro_shauli.png" alt="Shauli" />
 </section>
 <div id="content">
     <div id="mainContent">
@@ -54,7 +37,7 @@
     <aside>
         <section>
             <header>
-                <h3>Shauli's Top fans</h3>
+                <h3>Top 5 reviewers</h3>
             </header>
             <ul>
                 <li><a href="#">30 Years in club</a></li>

@@ -17,9 +17,11 @@ export class HomeComponent {
     posts: Post[];
 
     constructor(private postService: PostService) {
+        this.postService = postService;
+    }
+
+    ngOnInit(){
         this.postService.getPosts()
-            .subscribe(posts => {
-                this.posts = posts;
-            });
+            .subscribe(posts => this.posts = posts);
     }
 }
