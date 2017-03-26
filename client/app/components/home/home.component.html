@@ -52,17 +52,23 @@
 
 <!-- Posts list -->
 <div *ngFor="let post of posts | reverse">
-    <article class="blogPost">
-        <header>
-            <h2>{{post.title}}</h2>
-            <p>
-                Posted on {{post.postDate | date: 'dd/MM/yy'}} by <a href="mailto:{{post.email}}"><b>{{post.author}}</b></a>
-            </p>
-        </header>
-        <div>
-            <p>{{post.content}}</p>
+    <div *ngIf="(post._id) == 0">
+        <img src="../../../data/no_results.png" style="margin: 50px">
+    </div>
+    <div *ngIf="(post._id) != 0">
+        <article class="blogPost">
+            <header>
+                <h2>{{post.title}}</h2>
+                <p>
+                    Posted on {{post.postDate | date: 'dd/MM/yy'}} by <a
+                        href="mailto:{{post.email}}"><b>{{post.author}}</b></a>
+                </p>
+            </header>
+            <div>
+                <p>{{post.content}}</p>
 
-            <img src="{{post.image}}" class="img-responsive">
-        </div>
-    </article>
+                <img src="{{post.image}}" class="img-responsive">
+            </div>
+        </article>
+    </div>
 </div>

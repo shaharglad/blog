@@ -48,6 +48,12 @@ audio {
     margin-top: 100px;
 }
 
+/* The Arimo font is from the Google free fonts library */
+@font-face {
+    font-family: shauliFont;
+    src: url(data/fonts/Arimo-Regular.ttf);
+}
+
 #logForm {
     font-weight:normal;
     margin-top: 0px;
