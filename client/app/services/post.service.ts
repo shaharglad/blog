@@ -46,6 +46,7 @@ export class PostService{
         return this.http.put('/api/post/'+post._id, JSON.stringify(post), {headers: headers})
             .map(res => res.json());
     }
+
     topList(){
         return this.http.get('/api/topList')
             .map(res => res.json());

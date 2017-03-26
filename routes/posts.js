@@ -5,8 +5,15 @@
 var express = require('express');
 var router = express.Router();
 var mongojs = require('mongojs');
+var Twitter = require('twitter');
 var db = mongojs('mongodb://Admin:123456@ds151289.mlab.com:51289/postsdb', ['posts']);
 
+var client = new Twitter({
+    consumer_key: process.env.TWITTER_CONSUMER_KEY,
+    consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+    access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+    access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+});
 
 /* GET All Posts */
 router.get('/posts', function (req, res, next) {
@@ -82,12 +89,18 @@ router.post('/post', function (req, res, next) {
             if (err) {
                 res.send(err);
             } else {
+                console.log('Post added.');
                 res.json(result);
+
+                // POST TO TWITTER
+                client.post('statuses/update', {status: 'A New post is up! :)'},  function(error, tweet, response) {
+                    if(error) throw error;
+                    console.log('Tweet Posted.');
+                });
             }
         })
     }
 });
-
 
 // Delete Post
 router.delete('/post/:id', function (req, res, next) {
