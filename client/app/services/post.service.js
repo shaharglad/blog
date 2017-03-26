@@ -23,12 +23,12 @@ var PostService = (function () {
         return this.http.get('/api/posts')
             .map(function (res) { return res.json(); });
     };
-    PostService.prototype.filterPosts = function (filter) {
+    PostService.prototype.filterPosts = function (filter, filterName) {
         console.log("Arrived to post service");
         console.log("filter is: " + JSON.stringify(filter));
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('/api/filter', JSON.stringify(filter), { headers: headers })
+        return this.http.post('/api/filter/' + filterName, JSON.stringify(filter), { headers: headers })
             .map(function (res) { return res.json(); });
     };
     PostService.prototype.addPost = function (newPost) {

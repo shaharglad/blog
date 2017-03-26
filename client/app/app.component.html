@@ -1,33 +1,28 @@
 <header style="margin-top: -50px">
     <div id="blogTitleHead">
         <video id="videoLogo" width="950" autoplay>
-            <source src="./data/logo.mp4" type="video/mp4">Your browser does not support HTML5 video.
+            <source src="./data/logo.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
         </video>
     </div>
 </header>
-<nav>
-    <!-- Navigation -->
-    <ul>
-        <li class="selected"><a [routerLink]="['/home']">Blog</a></li>
-        <li><a [routerLink]="['/posts']">Manage</a></li>
-        <li><a [routerLink]="['/search']">Search</a></li>
-        <li><a href="#">Statistics</a></li>
-        <li class="subscribe">
-        <li>
-            <div id="transDemo2">
-                <div class="hover">
-                    <img src="images/rss.png" width="30" height="30" align="middle" style="margin:7px 0px">
-                </div>
-            </div>
-        </li>
-        <li><a href="#">Subscribe via. RSS</a></li>
-    </ul>
+<nav class="navbar-inverse">
+        <!-- Navigation -->
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li (click)="setActive('home')" [ngClass]="getActive('home')"><a [routerLink]="['/home']">Blog</a></li>
+            <li (click)="setActive('posts')" [ngClass]="getActive('posts')"><a [routerLink]="['/posts']">Manage</a></li>
+            <li (click)="setActive('maps')" [ngClass]="getActive('maps')"><a [routerLink]="['/map']">Map View</a></li>
+            <li><a href="#">Statistics</a></li>
+        </ul>
+    </div>
 </nav>
+
 <!--
 <section id="intro">
     Meet Shauli
 </section> -->
-<div id="content"  style="margin-top: 40px;">
+<div id="content" style="margin-top: 40px;">
     <div id="mainContent">
         <router-outlet></router-outlet>
     </div>
@@ -50,7 +45,7 @@
                 <li><a href="#">2014</a></li>
             </ul>
         </section>
-        <br /><br />
+        <br/><br/>
     </aside>
 </div>
 

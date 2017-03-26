@@ -1,3 +1,56 @@
+<!-- Search drop down -->
+<table>
+    <th>
+        <div class="dropdown" style="margin-right: 10px">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Search reviews
+                <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <!-- Add header here -->
+                <li (click)="dropDownChoose('location')"><a>By Location</a></li>
+                <li (click)="dropDownChoose('content')"><a>By Content</a></li>
+                <li (click)="dropDownChoose('author')"><a>By Author</a></li>
+            </ul>
+        </div>
+    </th>
+    <div *ngIf="filterChosen == 'location'">
+        <form (submit)="filterPosts()" id="filterLocation" #filterLocation="ngForm">
+            <th>
+                <input type="text" class="form-control" [(ngModel)]="location" name="location"
+                       #filterLocation="ngModel" style="width: 500px; margin-right: 10px"
+                       placeholder="Enter location name (New York, USA)">
+            </th>
+            <th>
+                <button type="submit" class="btn btn-success">Filter</button>
+            </th>
+        </form>
+    </div>
+    <div *ngIf="filterChosen == 'author'">
+        <form (submit)="filterPosts()" id="filterAuthor" #filterAuthor="ngForm">
+            <th>
+                <input type="text" class="form-control" [(ngModel)]="author" name="author" #filterContent="ngModel"
+                       style="width: 180px; margin-right: 10px" placeholder="Enter author name"></th>
+            <th><input type="text" class="form-control" [(ngModel)]="email" name="email" #filterContent="ngModel"
+                       style="width: 180px; margin-right: 10px" placeholder="Enter author's email"></th>
+            <th>
+                <button type="submit" class="btn btn-success">Filter</button>
+            </th>
+        </form>
+    </div>
+    <div *ngIf="filterChosen == 'content'">
+        <form (submit)="filterPosts()" id="filterContent" #filterContent="ngForm">
+            <th>
+                <input type="text" class="form-control" [(ngModel)]="title" name="title" #filterContent="ngModel"
+                       style="width: 180px; margin-right: 10px" placeholder="Enter review title"></th>
+            <th><input type="text" class="form-control" [(ngModel)]="content" name="content" #filterContent="ngModel"
+                       style="width: 180px; margin-right: 10px" placeholder="Enter content words"></th>
+            <th>
+                <button type="submit" class="btn btn-success">Filter</button>
+            </th>
+        </form>
+    </div>
+</table>
+
+<!-- Posts list -->
 <div *ngFor="let post of posts | reverse">
     <article class="blogPost">
         <header>

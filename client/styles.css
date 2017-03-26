@@ -48,12 +48,6 @@ audio {
     margin-top: 100px;
 }
 
-/* The Arimo font is from the Google free fonts library */
-@font-face {
-    font-family: shauliFont;
-    src: url(fonts/Arimo-Regular.ttf);
-}
-
 #logForm {
     font-weight:normal;
     margin-top: 0px;
@@ -78,11 +72,11 @@ nav {
 nav ul {
     margin: 0 auto;
     width: 940px;
-    list-style: none;
+
 }
 
 nav ul li {
-    float: left;
+    list-style: none;
 }
 
 nav ul li a {
@@ -108,23 +102,6 @@ nav ul li.subscribe a {
     margin-left: 22px;
     padding-left: 33px;
     text-align: left;
-}
-
-#transDemo2 div {
-    height: 30px;
-    width: 30px;
-    text-align: center;
-    -webkit-transition: all 2s ease-in-out;
-    -moz-transition: all 2s ease-in-out;
-    -ms-transition: all 2s ease-in-out;
-    transition: all 2s ease-in-out;
-}
-
-#transDemo2 div:hover, #transDemo2 div.hover_effect {
-    -webkit-transform: rotate(720deg) scale(2,2);
-    -moz-transform: rotate(720deg) scale(2,2);
-    -ms-transform: rotate(720deg) scale(2,2);
-    transform: rotate(720deg) scale(2,2);
 }
 
 /*------------------------------
