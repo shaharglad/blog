@@ -20,6 +20,22 @@ var HomeComponent = (function () {
         this.postService.getPosts()
             .subscribe(function (posts) { return _this.posts = posts; });
     }
+    HomeComponent.prototype.filterPosts = function () {
+        var _this = this;
+        var _filter = {
+            author: this.author,
+            content: this.content,
+            location: this.location,
+            email: this.email,
+            title: this.title
+        };
+        console.log("Filtering JSON:" + _filter);
+        this.postService.filterPosts(_filter, this.filterChosen)
+            .subscribe(function (posts) { return _this.posts = posts; });
+    };
+    HomeComponent.prototype.dropDownChoose = function (filterChosen) {
+        this.filterChosen = filterChosen;
+    };
     return HomeComponent;
 }());
 HomeComponent = __decorate([

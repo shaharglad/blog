@@ -18,12 +18,12 @@ export class PostService{
             .map(res => res.json());
     }
 
-    filterPosts(filter){
+    filterPosts(filter, filterName){
         console.log("Arrived to post service");
         console.log("filter is: " + JSON.stringify(filter));
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('/api/filter', JSON.stringify(filter), {headers: headers})
+        return this.http.post('/api/filter/' + filterName, JSON.stringify(filter), {headers: headers})
             .map(res => res.json());
     }
 

@@ -36,42 +36,255 @@ router.get('/post/:id', function (req, res, next) {
 });
 
 // Filter Posts
-router.post('/filter', function (req, res, next) {
+
+//filter by location
+router.post('/filter/location', function (req, res, next) {
     var filter = req.body;
 
     // Use Regex to let the user get results for strings that contains
-    // his query and not case sensitive, not just the same -Tomer
-    var author = ".*" + filter.author + ".*";
-    var content = ".*" + filter.content + ".*";
+    // his query and not case sensitive, not just the same
+    var location;
+    if (filter.location === undefined || "")
+        location = ".*.*";
+    else
+        location = ".*" + filter.location + ".*";
 
-    console.log("filter received: " + JSON.stringify(filter));
+    var noResults = [{"_id": 0, "content": "No results round"}];
 
+    console.log("[DEBUG] location: " + location);
+    console.log("[DEBUG] filter received: " + JSON.stringify(filter));
+
+    console.log("[DEBUG] ====> filtering by location")
     db.posts.find({
-        author: {$regex: author, $options: 'i'},
-        //"title": title,
-        content: {$regex: content, $options: 'i'}
+        location: {$regex: location, $options: 'i'},
     }, function (err, results) {
         if (err) {
             res.send(err);
         }
-        console.log("results: " + JSON.stringify(results));
-        res.json(results);
+        if (results.length === 0) {
+            console.log("no results: " + JSON.stringify(noResults));
+            res.json(noResults);
+        }
+        else {
+            console.log("results: " + JSON.stringify(results));
+            res.json(results);
+        }
     });
+
+});
+
+//filter - by author
+router.post('/filter/author', function (req, res, next) {
+    var filter = req.body;
+
+    // Use Regex to let the user get results for strings that contains
+    // his query and not case sensitive, not just the same
+    var author, email;
+
+    if (filter.author === undefined || "")
+        author = ".*.*";
+    else
+        author = ".*" + filter.author + ".*";
+
+    if (filter.email === undefined || "")
+        email = ".*.*";
+    else
+        email = ".*" + filter.email + ".*";
+
+    var noResults = [{"_id": 0, "content": "No results round"}];
+
+    console.log("[DEBUG] author: " + author);
+    console.log("[DEBUG] email: " + email);
+    console.log("[DEBUG] filter received: " + JSON.stringify(filter));
+
+    if ((author !== ".*.*") && (email === ".*.*")) {
+        console.log("[DEBUG] ====> filtering by author");
+        db.posts.find({
+            author: {$regex: author, $options: 'i'}
+        }, function (err, results) {
+            if (err) {
+                res.send(err);
+            }
+            if (results.length === 0) {
+                console.log("no results: " + JSON.stringify(noResults));
+                res.json(noResults);
+            }
+            else {
+                console.log("results: " + JSON.stringify(results));
+                res.json(results);
+            }
+        });
+    }
+
+    else if ((author === ".*.*") && (email !== ".*.*")) {
+        console.log("[DEBUG] ====> filtering by email");
+        db.posts.find({
+            email: {$regex: email, $options: 'i'}
+        }, function (err, results) {
+            if (err) {
+                res.send(err);
+            }
+            if (results.length === 0) {
+                console.log("no results: " + JSON.stringify(noResults));
+                res.json(noResults);
+            }
+            else {
+                console.log("results: " + JSON.stringify(results));
+                res.json(results);
+            }
+        });
+    }
+    else if ((author !== ".*.*") && (email !== ".*.*")) {
+        console.log("[DEBUG] ====> filtering by author and email");
+        db.posts.find({
+            author: {$regex: author, $options: 'i'},
+            email: {$regex: email, $options: 'i'}
+        }, function (err, results) {
+            if (err) {
+                res.send(err);
+            }
+            if (results.length === 0) {
+                console.log("no results: " + JSON.stringify(noResults));
+                res.json(noResults);
+            }
+            else {
+                console.log("results: " + JSON.stringify(results));
+                res.json(results);
+            }
+        });
+    }
+    else if ((author === ".*.*") && (email === ".*.*")) {
+        console.log("[DEBUG] ====> filtering by author and email");
+        db.posts.find({
+            author: {$regex: author, $options: 'i'},
+            email: {$regex: email, $options: 'i'}
+        }, function (err, results) {
+            if (err) {
+                res.send(err);
+            }
+            if (results.length === 0) {
+                console.log("no results: " + JSON.stringify(noResults));
+                res.json(noResults);
+            }
+            else {
+                console.log("results: " + JSON.stringify(results));
+                res.json(results);
+            }
+        });
+    }
+});
+
+//filter - by content
+router.post('/filter/content', function (req, res, next) {
+    var filter = req.body;
+
+    var content, title;
+    // Use Regex to let the user get results for strings that contains
+    // his query and not case sensitive, not just the same
+    if (filter.title === undefined || "")
+        title = ".*.*";
+    else
+        title = ".*" + filter.title + ".*";
+
+    if (filter.content === undefined || "")
+        content = ".*.*";
+    else
+        content = ".*" + filter.content + ".*";
+    var noResults = [{"_id": 0, "content": "No results round"}];
+
+    console.log("[DEBUG] ** content: " + content);
+    console.log("[DEBUG] ** title: " + title);
+    console.log("[DEBUG] ** filter received: " + JSON.stringify(filter));
+
+    if ((content !== ".*.*") && (title !== ".*.*")) {
+        console.log("====> filtering by content and title");
+        db.posts.find({
+            title: {$regex: title, $options: 'i'},
+            content: {$regex: content, $options: 'i'}
+        }, function (err, results) {
+            if (err) {
+                res.send(err);
+            }
+            if (results.length === 0) {
+                console.log("no results: " + JSON.stringify(noResults));
+                res.json(noResults);
+            }
+            else {
+                console.log("results: " + JSON.stringify(results));
+                res.json(results);
+            }
+        });
+    }
+    else if ((content === ".*.*") && (title !== ".*.*")) {
+        console.log("[DEBUG] ====> filtering by title");
+        db.posts.find({
+            title: {$regex: title, $options: 'i'},
+        }, function (err, results) {
+            if (err) {
+                res.send(err);
+            }
+            if (results.length === 0) {
+                console.log("no results: " + JSON.stringify(noResults));
+                res.json(noResults);
+            }
+            else {
+                console.log("results: " + JSON.stringify(results));
+                res.json(results);
+            }
+        });
+    }
+    else if ((content !== ".*.*") && (title === ".*.*")) {
+        console.log("[DEBUG] ====> filtering by content");
+        db.posts.find({
+            content: {$regex: content, $options: 'i'}
+        }, function (err, results) {
+            if (err) {
+                res.send(err);
+            }
+            if (results.length === 0) {
+                console.log("no results: " + JSON.stringify(noResults));
+                res.json(noResults);
+            }
+            else {
+                console.log("results: " + JSON.stringify(results));
+                res.json(results);
+            }
+        });
+    }
+    else if ((content === ".*.*") && (title === ".*.*")) {
+        console.log("[DEBUG] ====> filtering by content");
+        db.posts.find({
+            title: {$regex: title, $options: 'i'},
+            content: {$regex: content, $options: 'i'}
+        }, function (err, results) {
+            if (err) {
+                res.send(err);
+            }
+            if (results.length === 0) {
+                console.log("no results: " + JSON.stringify(noResults));
+                res.json(noResults);
+            }
+            else {
+                console.log("results: " + JSON.stringify(results));
+                res.json(results);
+            }
+        });
+    }
 });
 
 // Group by author and count how many posts
 router.get('/topList', function (req, res, next) {
     db.posts.aggregate([
-        { $project: { _id: false, "author": true}},
-        { $group: { _id: "$author", "total": { "$sum": 1 }}},
-        { $sort: { "total": -1 }},
-        { $limit: 3 }], function (err, results) {
-    if (err) {
-        res.send(err);
-    }
-    console.log("top results: " + JSON.stringify(results));
-    res.json(results);
-});
+        {$project: {_id: false, "author": true}},
+        {$group: {_id: "$author", "total": {"$sum": 1}}},
+        {$sort: {"total": -1}},
+        {$limit: 3}], function (err, results) {
+        if (err) {
+            res.send(err);
+        }
+        console.log("top results: " + JSON.stringify(results));
+        res.json(results);
+    });
 })
 ;
 
