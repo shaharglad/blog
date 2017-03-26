@@ -306,7 +306,7 @@ router.post('/post', function (req, res, next) {
                 res.json(result);
 
                 // POST TO TWITTER
-                client.post('statuses/update', {status: 'A New post is up! :)'},  function(error, tweet, response) {
+                client.post('statuses/update', {status: 'A New post is up! :)\nTitle: ' + post.title},  function(error, tweet, response) {
                     if(error) throw error;
                     console.log('Tweet Posted.');
                 });
