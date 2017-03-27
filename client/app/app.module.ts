@@ -11,13 +11,14 @@ import { AppComponent } from './app.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { PostsComponent } from './components/posts/posts.component';
 import { HomeComponent } from './components/home/home.component';
-import { routing } from './app.routing';
+import { MapComponent } from './components/map/map.component';
+import { Routing } from './app.routing';
 import { ReversePipe } from './reverse';
 //import {AppRoutingModule, routingComponents} from './app.routing';
 
 @NgModule({
-    imports: [ BrowserModule, HttpModule, FormsModule, routing ],
-    declarations: [AppComponent, PostsComponent, HomeComponent, ReversePipe ],
+    imports: [ BrowserModule, HttpModule, FormsModule, Routing ],
+    declarations: [AppComponent, PostsComponent, HomeComponent, MapComponent, ReversePipe ],
     providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
     bootstrap: [AppComponent]
 })

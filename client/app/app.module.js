@@ -16,6 +16,7 @@ var app_component_1 = require("./app.component");
 var common_1 = require("@angular/common");
 var posts_component_1 = require("./components/posts/posts.component");
 var home_component_1 = require("./components/home/home.component");
+var map_component_1 = require("./components/map/map.component");
 var app_routing_1 = require("./app.routing");
 var reverse_1 = require("./reverse");
 //import {AppRoutingModule, routingComponents} from './app.routing';
@@ -26,8 +27,8 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule, app_routing_1.routing],
-        declarations: [app_component_1.AppComponent, posts_component_1.PostsComponent, home_component_1.HomeComponent, reverse_1.ReversePipe],
+        imports: [platform_browser_1.BrowserModule, http_1.HttpModule, forms_1.FormsModule, app_routing_1.Routing],
+        declarations: [app_component_1.AppComponent, posts_component_1.PostsComponent, home_component_1.HomeComponent, map_component_1.MapComponent, reverse_1.ReversePipe],
         providers: [{ provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy }],
         bootstrap: [app_component_1.AppComponent]
     })

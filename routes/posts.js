@@ -8,6 +8,10 @@ var mongojs = require('mongojs');
 var Twitter = require('twitter');
 var db = mongojs('mongodb://Admin:123456@ds151289.mlab.com:51289/postsdb', ['posts']);
 
+var googleMapsClient = require('@google/maps').createClient({
+    key: 'AIzaSyDMesUgCIGArEb7YpDtzz7S0Z-cXg-Us5c'
+});
+
 var client = new Twitter({
     consumer_key: process.env.TWITTER_CONSUMER_KEY,
     consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
@@ -288,7 +292,7 @@ router.get('/topList', function (req, res, next) {
 })
 ;
 
-/* POST/SAVE a Post */
+/* POST/SAVE a Post + Update Twitter API + Get Coordinates from Google maps*/
 router.post('/post', function (req, res, next) {
     var post = req.body;
     if (!post.title) {
@@ -297,21 +301,35 @@ router.post('/post', function (req, res, next) {
             "error": "Invalid Data"
         });
     } else {
-        console.log("Going to save post..");
-        db.posts.save(post, function (err, result) {
-            if (err) {
-                res.send(err);
-            } else {
-                console.log('Post added.');
-                res.json(result);
+        // Get Google Maps coordinates based on post's location
+        console.log("[DEBUG] Going to update map's coordinates now...");
+        googleMapsClient.geocode({
+            address: post.location
+        }, function (err, response) {
+            if (!err) {
+                post.latCoordinate = response.json.results[0].geometry.location.lat;
+                post.longCoordinate = response.json.results[0].geometry.location.lng;
+                console.log(post.latCoordinate);
+                console.log(post.longCoordinate);
 
-                // POST TO TWITTER
-                client.post('statuses/update', {status: 'A New post is up! :)\nTitle: ' + post.title},  function(error, tweet, response) {
-                    if(error) throw error;
-                    console.log('Tweet Posted.');
-                });
+                // Save new post with all parameters
+                console.log("Going to save post..");
+                db.posts.save(post, function (err, result) {
+                    if (err) {
+                        res.send(err);
+                    } else {
+                        console.log('Post added.');
+                        res.json(result);
+
+                        // Twitter - Post title to our twitter account
+                        client.post('statuses/update', {status: 'A New post is up! :)\nTitle: ' + post.title}, function (error, tweet, response) {
+                            if (error) throw error;
+                            console.log('Tweet Posted.');
+                        });
+                    }
+                })
             }
-        })
+        });
     }
 });
 
@@ -338,19 +356,32 @@ router.put('/post/:id', function (req, res, next) {
         updPost.location = post.location;
         updPost.content = post.content;
         updPost.image = post.image;
-    }
 
-    if (!updPost) {
-        res.status(400);
-        res.json({
-            "error": "Bad Data"
-        });
-    } else {
-        db.posts.update({_id: mongojs.ObjectId(req.params.id)}, updPost, {}, function (err, post) {
-            if (err) {
-                res.send(err);
+        // Google Maps Geocode post's location for getting coordinates from google maps
+        console.log("[DEBUG] Going to update map's coordinates now...");
+        googleMapsClient.geocode({
+            address: updPost.location
+        }, function (err, response) {
+            if (!err) {
+                post.latCoordinate = response.json.results[0].geometry.location.lat;
+                post.longCoordinate = response.json.results[0].geometry.location.lng;
+                updPost.latCoordinate = post.latCoordinate;
+                updPost.longCoordinate = post.longCoordinate;
+
+                if (!updPost) {
+                    res.status(400);
+                    res.json({
+                        "error": "Bad Data"
+                    });
+                } else {
+                    db.posts.update({_id: mongojs.ObjectId(req.params.id)}, updPost, {}, function (err, post) {
+                        if (err) {
+                            res.send(err);
+                        }
+                        res.json(post);
+                    });
+                }
             }
-            res.json(post);
         });
     }
 });

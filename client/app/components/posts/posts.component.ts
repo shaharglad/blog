@@ -23,6 +23,8 @@ export class PostsComponent {
     postDate: Date;
     image: string;
     content: string;
+    latCoordinate: number;
+    longCoordinate: number;
     successMessage: boolean;
 
     constructor(private postService: PostService) {
@@ -50,7 +52,9 @@ export class PostsComponent {
             postDate: new Date().toLocaleDateString(),
             location: this.location,
             image: this.image,
-            content: this.content
+            content: this.content,
+            latCoordinate: this.latCoordinate,
+            longCoordinate: this.longCoordinate
         }
 
         this.postService.addPost(newPost)
@@ -63,6 +67,8 @@ export class PostsComponent {
                 this.image = '';
                 this.postDate = null;
                 this.content = '';
+                this.latCoordinate = null;
+                this.longCoordinate = null;
             });
     }
 
@@ -89,7 +95,9 @@ export class PostsComponent {
             location: post.location,
             image: post.image,
             postDate: post.postDate,
-            content: post.content
+            content: post.content,
+            latCoordinate: post.latCoordinate,
+            longCoordinate: post.longCoordinate
         };
 
         this.postService.updatePost(_post).subscribe(data => {
@@ -100,6 +108,8 @@ export class PostsComponent {
             this.image = '';
             this.postDate = null;
             this.content = '';
+            this.latCoordinate = null;
+            this.longCoordinate = null;
         });
     }
 

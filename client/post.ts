@@ -3,6 +3,7 @@
  */
 
 export class Post{
+    _id: string;
     title: string;
     author: string;
     email: string;
@@ -10,6 +11,6 @@ export class Post{
     image: string;
     postDate: Date;
     content: string;
-    latCoordinate: string;
-    longCoordinate: string;
+    latCoordinate: number;
+    longCoordinate: number;
 }

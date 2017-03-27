@@ -59,15 +59,14 @@
         <article class="blogPost">
             <header>
                 <h2>{{post.title}}</h2>
-                <p>
-                    Posted on {{post.postDate | date: 'dd/MM/yy'}} by <a
-                        href="mailto:{{post.email}}"><b>{{post.author}}</b></a>
-                </p>
+                <table style="margin-top: -10px"><th class="glyphicon glyphicon-time" style="color: #5e5e5e"></th><th style="padding-left: 5px"><p>Posted on {{post.postDate | date: 'dd/MM/yy'}} by <a href="mailto:{{post.email}}"><b>{{post.author}}</b></a>
+                </p></th><th class="glyphicon glyphicon-globe" style="color: #5e5e5e; padding-left: 7px"></th><th style="padding-left: 5px"><p>Location: <a href="http://maps.google.com?q={{post.location}}" target="_blank"><b>{{post.location}}</b></a></p></th></table>
+
             </header>
             <div>
                 <p>{{post.content}}</p>
 
-                <img src="{{post.image}}">
+                <img *ngIf="(post.image) != null" src="{{post.image}}">
             </div>
         </article>
     </div>

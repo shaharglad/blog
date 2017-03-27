@@ -59,9 +59,9 @@
 
                         <label for="addImage">Image URL</label>
                         <input type="text" class="form-control" id="addImage" [(ngModel)]="image"
-                               name="addImage" #addImage="ngModel" required>
-                        <div *ngIf="!addImage.valid && addImage.dirty" class="alert alert-danger">
-                            Image URL is required
+                               name="addImage" #addImage="ngModel">
+                        <div *ngIf="!addImage.valid" class="alert alert-danger">
+                            Image URL is not valid
                         </div>
                     </div>
 

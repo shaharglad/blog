@@ -40,7 +40,9 @@ var PostsComponent = (function () {
             postDate: new Date().toLocaleDateString(),
             location: this.location,
             image: this.image,
-            content: this.content
+            content: this.content,
+            latCoordinate: this.latCoordinate,
+            longCoordinate: this.longCoordinate
         };
         this.postService.addPost(newPost)
             .subscribe(function (post) {
@@ -52,6 +54,8 @@ var PostsComponent = (function () {
             _this.image = '';
             _this.postDate = null;
             _this.content = '';
+            _this.latCoordinate = null;
+            _this.longCoordinate = null;
         });
     };
     PostsComponent.prototype.deletePost = function (id) {
@@ -76,7 +80,9 @@ var PostsComponent = (function () {
             location: post.location,
             image: post.image,
             postDate: post.postDate,
-            content: post.content
+            content: post.content,
+            latCoordinate: post.latCoordinate,
+            longCoordinate: post.longCoordinate
         };
         this.postService.updatePost(_post).subscribe(function (data) {
             _this.title = '';
@@ -86,6 +92,8 @@ var PostsComponent = (function () {
             _this.image = '';
             _this.postDate = null;
             _this.content = '';
+            _this.latCoordinate = null;
+            _this.longCoordinate = null;
         });
     };
     return PostsComponent;
