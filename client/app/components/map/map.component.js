@@ -19,6 +19,18 @@ var MapComponent = (function () {
             _this.posts = posts;
         });
     }
+    MapComponent.prototype.ngAfterViewInit = function () {
+        var canvasContainer = document.getElementById('mapTitle');
+        var canvas = document.createElement('canvas');
+        var context = canvas.getContext('2d');
+        // happy drawing from here on
+        canvas.width = 220;
+        canvas.height = 120;
+        context.fillStyle = "green";
+        context.font = "bold 48px Arial";
+        context.strokeText("Maps", (canvas.width / 4), (canvas.height / 2) + 8);
+        canvasContainer.appendChild(canvas);
+    };
     return MapComponent;
 }());
 MapComponent = __decorate([

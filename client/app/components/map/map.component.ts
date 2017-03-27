@@ -30,7 +30,18 @@ export class MapComponent {
             });
     }
 
+    ngAfterViewInit() { // wait for the view to init before using the element
+        let canvasContainer = document.getElementById('mapTitle');
+        let canvas = document.createElement('canvas');
+        let context = canvas.getContext('2d');
 
+        // happy drawing from here on
+        canvas.width=220;
+        canvas.height=120;
+        context.fillStyle = "green";
+        context.font = "bold 48px Arial";
+        context.strokeText("Maps", (canvas.width / 4), (canvas.height / 2) + 8);
 
-
+        canvasContainer.appendChild(canvas);
+    }
 }
