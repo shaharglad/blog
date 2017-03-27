@@ -13,6 +13,13 @@
             <li (click)="setActive('home')" [ngClass]="getActive('home')"><a [routerLink]="['/home']">Blog</a></li>
             <li (click)="setActive('posts')" [ngClass]="getActive('posts')"><a [routerLink]="['/posts']">Manage</a></li>
             <li (click)="setActive('maps')" [ngClass]="getActive('maps')"><a [routerLink]="['/map']">Map View</a></li>
+            <li>
+                <div id="transDemo2">
+                    <div class="hover">
+                        <img src="images/world.ico" width="30" height="30" align="middle" style="margin:7px 0px">
+                    </div>
+                </div>
+            </li>
         </ul>
     </div>
 </nav>
