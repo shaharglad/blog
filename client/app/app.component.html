@@ -10,13 +10,6 @@
         <!-- Navigation -->
     <div class="container">
         <ul class="nav navbar-nav">
-            <li>
-                <div id="transDemo2">
-                    <div class="hover">
-                        <img src="images/world.ico" width="30" height="30" align="middle" style="margin:7px 0px">
-                    </div>
-                </div>
-            </li>
             <li (click)="setActive('home')" [ngClass]="getActive('home')"><a [routerLink]="['/home']">Blog</a></li>
             <li (click)="setActive('posts')" [ngClass]="getActive('posts')"><a [routerLink]="['/posts']">Manage</a></li>
             <li (click)="setActive('maps')" [ngClass]="getActive('maps')"><a [routerLink]="['/map']">Map View</a></li>
@@ -24,10 +17,7 @@
         </ul>
     </div>
 </nav>
-<!--
-<section id="intro">
-    Meet Shauli
-</section> -->
+
 <div id="content" style="margin-top: 40px;">
     <div id="mainContent">
         <router-outlet></router-outlet>
@@ -43,12 +33,12 @@
         </section>
         <section>
             <header>
-                <h3>Join our twitter!</h3>
+                <h3>Follow us!</h3>
             </header>
             <ul>
-                <li><a href="#">2016</a></li>
-                <li><a href="#">2015</a></li>
-                <li><a href="#">2014</a></li>
+                <iframe ng-show="user.twitter" allowtransparency="true" frameborder="0" scrolling="no"
+                        src="//platform.twitter.com/widgets/follow_button.html?screen_name=tourguidecolman"
+                        style="width:300px; height:20px;"></iframe>
             </ul>
         </section>
         <br/><br/>
