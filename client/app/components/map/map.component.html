@@ -1,8 +1,9 @@
-<div id="mapTitle" style="float: right"></div>
-
+<h2 id="title">Reviews location Map</h2>
 <ng2-map zoom="2" center="30.1291139, -5.3802352" style="height:400px; width: 600px">
     <marker *ngFor="let post of posts"
             [position]="post.mapCoordinates">
     </marker>
 
 </ng2-map>
+
+<div id="mapSlogan" style="float: right"></div>

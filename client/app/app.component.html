@@ -10,9 +10,6 @@
         <!-- Navigation -->
     <div class="container">
         <ul class="nav navbar-nav">
-            <li (click)="setActive('home')" [ngClass]="getActive('home')"><a [routerLink]="['/home']">Blog</a></li>
-            <li (click)="setActive('posts')" [ngClass]="getActive('posts')"><a [routerLink]="['/posts']">Manage</a></li>
-            <li (click)="setActive('maps')" [ngClass]="getActive('maps')"><a [routerLink]="['/map']">Map View</a></li>
             <li>
                 <div id="transDemo2">
                     <div class="hover">
@@ -20,6 +17,10 @@
                     </div>
                 </div>
             </li>
+            <li (click)="setActive('home')" [ngClass]="getActive('home')"><a [routerLink]="['/home']">Blog</a></li>
+            <li (click)="setActive('posts')" [ngClass]="getActive('posts')"><a [routerLink]="['/posts']">Manage</a></li>
+            <li (click)="setActive('maps')" [ngClass]="getActive('maps')"><a [routerLink]="['/map']">Map View</a></li>
+
         </ul>
     </div>
 </nav>
@@ -42,7 +43,7 @@
         </section>
         <section>
             <header>
-                <h3>Post Archives</h3>
+                <h3>Join our twitter!</h3>
             </header>
             <ul>
                 <li><a href="#">2016</a></li>
@@ -55,17 +56,9 @@
 </div>
 
 <!-- Footer -->
-<footer>
-    <div>
-        <section id="about">
-            <h3>About</h3>
-            <p><a href="#"></a>Click here to read about Shauli's history and view where his fans from!</p>
-        </section>
-        <section id="popular">
-            <h3>Blog's Creators</h3>
-            <p><a href="#">Click here</a> to read who are behind this magnificant blog!</p>
-        </section>
-    </div>
+<footer style="color: white; text-shadow: 2px 2px 20px white; text-align: center; padding: 20px">
+All rights reserved to Shahar Gladstein, Tomer Brami and Iddo Alexander.<br>
+Colman MEAN Stack project 2017.
 </footer>
 
 

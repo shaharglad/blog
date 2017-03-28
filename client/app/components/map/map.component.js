@@ -17,20 +17,18 @@ var MapComponent = (function () {
         this.postService.getPosts()
             .subscribe(function (posts) { return _this.posts = posts; });
     }
-    MapComponent.prototype.ngOnInit = function () {
-    };
     //Canvas drawing
     MapComponent.prototype.ngAfterViewInit = function () {
-        var canvasContainer = document.getElementById('mapTitle');
+        var canvasContainer = document.getElementById('mapSlogan');
         var canvas = document.createElement('canvas');
         var context = canvas.getContext('2d');
         console.log(this.posts);
         // happy drawing from here on
-        canvas.width = 220;
+        canvas.width = 600;
         canvas.height = 120;
-        context.fillStyle = "green";
-        context.font = "bold 48px Arial";
-        context.strokeText("Maps", (canvas.width / 4), (canvas.height / 2) + 8);
+        context.fillStyle = "blue";
+        context.font = "bold 40px Arial";
+        context.strokeText("One life, travel well :)", (canvas.width / 4), (canvas.height / 2) + 8);
         canvasContainer.appendChild(canvas);
     };
     return MapComponent;

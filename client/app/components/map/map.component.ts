@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {PostService} from '../../services/post.service';
 import {Post} from '../../../Post';
 import { Ng2MapModule } from 'ng2-map';
@@ -11,7 +11,7 @@ import { Ng2MapModule } from 'ng2-map';
     styles: ['map.component.css']
 })
 
-export class MapComponent implements OnInit {
+export class MapComponent {
     location: {
         lat: number,
         lng: number,
@@ -25,23 +25,20 @@ export class MapComponent implements OnInit {
             .subscribe(posts => this.posts = posts);
     }
 
-    ngOnInit(){
-
-    }
 
     //Canvas drawing
     ngAfterViewInit() { // wait for the view to init before using the element
-        let canvasContainer = document.getElementById('mapTitle');
+        let canvasContainer = document.getElementById('mapSlogan');
         let canvas = document.createElement('canvas');
         let context = canvas.getContext('2d');
         console.log(this.posts);
 
         // happy drawing from here on
-        canvas.width=220;
+        canvas.width=600;
         canvas.height=120;
-        context.fillStyle = "green";
-        context.font = "bold 48px Arial";
-        context.strokeText("Maps", (canvas.width / 4), (canvas.height / 2) + 8);
+        context.fillStyle = "blue";
+        context.font = "bold 40px Arial";
+        context.strokeText("One life, travel well :)", (canvas.width / 4), (canvas.height / 2) + 8);
 
         canvasContainer.appendChild(canvas);
     }
