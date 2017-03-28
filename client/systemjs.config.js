@@ -26,8 +26,10 @@
             '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
             '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
             // other libraries
-            'rxjs':                      'npm:rxjs',
-            'angular-in-memory-web-api': 'npm:angular-in-memory-web-api'
+            'rxjs': 'npm:rxjs',
+            'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
+
+            'ng2-map': 'npm:ng2-map/dist'
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {
@@ -41,7 +43,13 @@
             'angular-in-memory-web-api': {
                 main: './index.js',
                 defaultExtension: 'js'
+            },
+            'ng2-map': {
+                main: 'ng2-map.umd.js',
+                defaultExtension: 'js'
             }
         }
+
     });
-})(this);
+})
+(this);

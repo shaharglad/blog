@@ -52,4 +52,11 @@ export class PostService{
             .map(res => res.json());
     }
 
+    geoCode(coordinates){
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('/api/geocode/', JSON.stringify(coordinates), {headers: headers})
+            .map(res => res.json());
+    }
+
 }

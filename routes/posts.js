@@ -58,9 +58,9 @@ router.post('/filter/location', function (req, res, next) {
     console.log("[DEBUG] location: " + location);
     console.log("[DEBUG] filter received: " + JSON.stringify(filter));
 
-    console.log("[DEBUG] ====> filtering by location")
+    console.log("[DEBUG] ====> filtering by location");
     db.posts.find({
-        location: {$regex: location, $options: 'i'},
+        location: {$regex: location, $options: 'i'}
     }, function (err, results) {
         if (err) {
             res.send(err);
@@ -307,10 +307,8 @@ router.post('/post', function (req, res, next) {
             address: post.location
         }, function (err, response) {
             if (!err) {
-                post.latCoordinate = response.json.results[0].geometry.location.lat;
-                post.longCoordinate = response.json.results[0].geometry.location.lng;
-                console.log(post.latCoordinate);
-                console.log(post.longCoordinate);
+                post.mapCoordinates = response.json.results[0].geometry.location.lat + ", " + response.json.results[0].geometry.location.lng;
+                console.log(post.mapCoordinates);
 
                 // Save new post with all parameters
                 console.log("Going to save post..");
@@ -356,6 +354,7 @@ router.put('/post/:id', function (req, res, next) {
         updPost.location = post.location;
         updPost.content = post.content;
         updPost.image = post.image;
+        updPost.mapCoordinates = post.mapCoordinates;
 
         // Google Maps Geocode post's location for getting coordinates from google maps
         console.log("[DEBUG] Going to update map's coordinates now...");
@@ -363,10 +362,8 @@ router.put('/post/:id', function (req, res, next) {
             address: updPost.location
         }, function (err, response) {
             if (!err) {
-                post.latCoordinate = response.json.results[0].geometry.location.lat;
-                post.longCoordinate = response.json.results[0].geometry.location.lng;
-                updPost.latCoordinate = post.latCoordinate;
-                updPost.longCoordinate = post.longCoordinate;
+                updPost.mapCoordinates = response.json.results[0].geometry.location.lat + ", " + response.json.results[0].geometry.location.lng;
+                console.log(updPost.mapCoordinates);
 
                 if (!updPost) {
                     res.status(400);

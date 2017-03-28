@@ -1,39 +1,40 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PostService} from '../../services/post.service';
 import {Post} from '../../../Post';
+import { Ng2MapModule } from 'ng2-map';
 
 @Component({
     moduleId: module.id,
-    selector: 'map',
+    selector: 'google-map',
     //selector: 'map',
     templateUrl: 'map.component.html',
     styles: ['map.component.css']
 })
 
-export class MapComponent {
+export class MapComponent implements OnInit {
+    location: {
+        lat: number,
+        lng: number,
+        name: string
+    };
+
     posts: Post[];
-    title: string;
-    author: string;
-    email: string;
-    location: string;
-    postDate: Date;
-    image: string;
-    content: string;
-    latCoordinate: number;
-    longCoordinate: number;
-    successMessage: boolean;
 
     constructor(private postService: PostService) {
         this.postService.getPosts()
-            .subscribe(posts => {
-                this.posts = posts;
-            });
+            .subscribe(posts => this.posts = posts);
     }
 
+    ngOnInit(){
+
+    }
+
+    //Canvas drawing
     ngAfterViewInit() { // wait for the view to init before using the element
         let canvasContainer = document.getElementById('mapTitle');
         let canvas = document.createElement('canvas');
         let context = canvas.getContext('2d');
+        console.log(this.posts);
 
         // happy drawing from here on
         canvas.width=220;
@@ -44,4 +45,6 @@ export class MapComponent {
 
         canvasContainer.appendChild(canvas);
     }
+    //End of Canvas drawing
+
 }

@@ -52,6 +52,12 @@ var PostService = (function () {
         return this.http.get('/api/topList')
             .map(function (res) { return res.json(); });
     };
+    PostService.prototype.geoCode = function (coordinates) {
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('/api/geocode/', JSON.stringify(coordinates), { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
     return PostService;
 }());
 PostService = __decorate([

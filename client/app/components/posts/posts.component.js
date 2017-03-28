@@ -41,8 +41,7 @@ var PostsComponent = (function () {
             location: this.location,
             image: this.image,
             content: this.content,
-            latCoordinate: this.latCoordinate,
-            longCoordinate: this.longCoordinate
+            mapCoordinates: this.mapCoordinates
         };
         this.postService.addPost(newPost)
             .subscribe(function (post) {
@@ -54,8 +53,7 @@ var PostsComponent = (function () {
             _this.image = '';
             _this.postDate = null;
             _this.content = '';
-            _this.latCoordinate = null;
-            _this.longCoordinate = null;
+            _this.mapCoordinates = '';
         });
     };
     PostsComponent.prototype.deletePost = function (id) {
@@ -81,8 +79,7 @@ var PostsComponent = (function () {
             image: post.image,
             postDate: post.postDate,
             content: post.content,
-            latCoordinate: post.latCoordinate,
-            longCoordinate: post.longCoordinate
+            mapCoordinates: post.mapCoordinates
         };
         this.postService.updatePost(_post).subscribe(function (data) {
             _this.title = '';
@@ -92,8 +89,7 @@ var PostsComponent = (function () {
             _this.image = '';
             _this.postDate = null;
             _this.content = '';
-            _this.latCoordinate = null;
-            _this.longCoordinate = null;
+            _this.mapCoordinates = '';
         });
     };
     return PostsComponent;

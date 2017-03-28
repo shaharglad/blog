@@ -15,14 +15,16 @@ var MapComponent = (function () {
         var _this = this;
         this.postService = postService;
         this.postService.getPosts()
-            .subscribe(function (posts) {
-            _this.posts = posts;
-        });
+            .subscribe(function (posts) { return _this.posts = posts; });
     }
+    MapComponent.prototype.ngOnInit = function () {
+    };
+    //Canvas drawing
     MapComponent.prototype.ngAfterViewInit = function () {
         var canvasContainer = document.getElementById('mapTitle');
         var canvas = document.createElement('canvas');
         var context = canvas.getContext('2d');
+        console.log(this.posts);
         // happy drawing from here on
         canvas.width = 220;
         canvas.height = 120;
@@ -36,7 +38,7 @@ var MapComponent = (function () {
 MapComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
-        selector: 'map',
+        selector: 'google-map',
         //selector: 'map',
         templateUrl: 'map.component.html',
         styles: ['map.component.css']

@@ -11,6 +11,5 @@ export class Post{
     image: string;
     postDate: Date;
     content: string;
-    latCoordinate: number;
-    longCoordinate: number;
+    mapCoordinates: string;
 }
